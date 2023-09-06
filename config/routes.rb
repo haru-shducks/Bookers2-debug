@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   get "home/about"=>"homes#about"
+
   devise_for :users
+
+  #検索機能
+  get "/search", to: "searches#search"
 
   resources :users, only: [:index,:show,:edit,:update] do
     #フォロー、フォロワー機能
