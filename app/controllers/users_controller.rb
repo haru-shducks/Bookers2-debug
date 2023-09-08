@@ -7,6 +7,11 @@ class UsersController < ApplicationController
     @book = Book.new
     @following_users = @user.following_users
     @follower_users = @user.follower_users
+    #post count
+    @today_book = @books.created_today
+    @yesterday_book = @books.created_yesterday
+    @this_week_book = @books.created_this_week
+    @last_week_book = @books.created_last_week
   end
 
   def index
@@ -33,7 +38,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @users = user.following_users
   end
-  
+
   # フォロワー一覧
   def followers
     user = User.find(params[:id])
