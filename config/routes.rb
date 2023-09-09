@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/search", to: "searches#search"
 
   resources :users, only: [:index,:show,:edit,:update] do
+    get "search" => "users#search"
     #フォロー、フォロワー機能
     member do
       get :follows, :followers

@@ -11,7 +11,16 @@
       <%= render 'books/index',books: @books %>
       <%= render "post_count", today_book: @today_book, yesterday_book: @yesterday_book, this_week_book: @this_week_book, last_week_book: @last_week_book %>
       <%= render "post_count_graph", books: @books %>
+      <%= form_with url:user_search_path(@user), method: :get, local: false do |f| %>
+        <%= f.date_field :created_at %>
+        <%= f.submit '検索', class: "btn btn-primary" %>
+      <% end %>
 
+      <div id="search_result">
+        <% if @search_book.present? %>
+          <%= render 'search', search_book: @search_book %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
