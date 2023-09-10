@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
 
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show]
+
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     #いいね機能ルート
     resources :favorites, only: [:create, :destroy]
